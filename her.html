@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Bhawana ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 25%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,.15), transparent 25%),
+                linear-gradient(135deg, #241b35, #5b294f, #9b3d56);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts */
+        .floating-hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 22px;
+            animation: floatUp linear forwards;
+            opacity: .75;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: .8;
+            }
+            to {
+                transform: translateY(-115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            width: min(1000px, 92%);
+            margin: auto;
+            padding: 90px 0;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-card {
+            width: 100%;
+            padding: 55px 35px;
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 25px 70px rgba(0,0,0,.25);
+            animation: appear 1.5s ease;
+        }
+
+        .small-heart {
+            font-size: 45px;
+            animation: beat 1.5s infinite;
+        }
+
+        @keyframes beat {
+            50% { transform: scale(1.18); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 9vw, 6.5rem);
+            margin: 20px 0 10px;
+            color: #fff4f5;
+            text-shadow: 0 5px 25px rgba(0,0,0,.3);
+        }
+
+        .hero h2 {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            font-weight: normal;
+            color: #ffd9df;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 28px auto 0;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #f9e8eb;
+        }
+
+        .scroll-btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 13px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,.5);
+            background: rgba(255,255,255,.12);
+            transition: .3s;
+        }
+
+        .scroll-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,.22);
+        }
+
+        /* General cards */
+        .title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            margin-bottom: 18px;
+            color: #fff3f5;
+        }
+
+        .subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+            line-height: 1.8;
+            color: #f4dfe3;
+            font-size: 1.05rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 45px rgba(0,0,0,.18);
+        }
+
+        /* Story */
+        .story {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .story-card {
+            padding: 28px;
+            border-radius: 22px;
+            background: rgba(255,255,255,.09);
+            border: 1px solid rgba(255,255,255,.15);
+            transition: .3s;
+        }
+
+        .story-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,.14);
+        }
+
+        .story-card .icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .story-card h3 {
+            color: #ffd9df;
+            margin-bottom: 10px;
+            font-size: 1.35rem;
+        }
+
+        .story-card p {
+            line-height: 1.8;
+            color: #f7e8ea;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 760px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255,255,255,.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 9px;
+            top: 4px;
+            width: 23px;
+            height: 23px;
+            border-radius: 50%;
+            background: #ff8094;
+            border: 5px solid #5b294f;
+            box-shadow: 0 0 20px rgba(255,128,148,.6);
+        }
+
+        .timeline-item h3 {
+            color: #ffd9df;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: #f6e7e9;
+            line-height: 1.8;
+        }
+
+        /* Honest message */
+        .letter {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #f9e8eb;
+        }
+
+        .letter strong {
+            color: #fff;
+        }
+
+        .signature {
+            margin-top: 25px;
+            font-size: 1.35rem;
+            color: #ffd9df;
+            font-style: italic;
+        }
+
+        /* Meeting */
+        .meeting {
+            text-align: center;
+        }
+
+        .meeting-date {
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: #fff;
+            margin: 25px 0;
+        }
+
+        .meeting p {
+            max-width: 720px;
+            margin: auto;
+            line-height: 1.9;
+            color: #f5e4e7;
+        }
+
+        /* Proposal */
+        .proposal {
+            text-align: center;
+            padding-bottom: 120px;
+        }
+
+        .ring {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: ringFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes ringFloat {
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .proposal h2 {
+            font-size: clamp(2.3rem, 7vw, 4.5rem);
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .proposal-text {
+            max-width: 720px;
+            margin: auto;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #f9e8eb;
+        }
+
+        .question {
+            margin: 35px 0;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: bold;
+            color: #ffb7c3;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            50% { transform: scale(1.04); }
+        }
+
+
+        /* Proposal buttons */
+        .proposal-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-top: 32px;
+            min-height: 62px;
+            position: relative;
+        }
+
+        .proposal-btn {
+            border: 0;
+            padding: 16px 30px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .yes-btn {
+            color: white;
+            background: linear-gradient(135deg, #ff5f7e, #ff8fa3);
+            box-shadow: 0 10px 28px rgba(255, 95, 126, .35);
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 15px 35px rgba(255, 95, 126, .48);
+        }
+
+        .no-btn {
+            color: #fff;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.35);
+            box-shadow: 0 8px 20px rgba(0,0,0,.12);
+        }
+
+        .no-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,.19);
+        }
+
+        .no-btn.moving {
+            position: fixed;
+            z-index: 20;
+            transition: left .28s ease, top .28s ease, transform .28s ease;
+        }
+
+        .proposal-hint {
+            margin-top: 20px;
+            color: #eacfd5;
+            font-size: .92rem;
+            opacity: .9;
+        }
+
+        /* Celebration */
+        .celebration {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(19, 8, 22, .94);
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            overflow: auto;
+        }
+
+        .celebration.show {
+            display: flex;
+        }
+
+        .celebration-card {
+            width: min(680px, 94vw);
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: center;
+            padding: 48px 28px;
+            border-radius: 30px;
+            background: linear-gradient(145deg, #fff, #fff0f3);
+            color: #54263f;
+            box-shadow: 0 30px 90px rgba(0,0,0,.45);
+            animation: celebrationPop .65s ease;
+        }
+
+        @keyframes celebrationPop {
+            from { opacity: 0; transform: scale(.65) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .celebration-card h2 {
+            color: #d94b66;
+            font-size: clamp(2.1rem, 8vw, 4rem);
+            margin-bottom: 15px;
+        }
+
+        .celebration-ring {
+            font-size: clamp(55px, 15vw, 85px);
+            margin: 12px 0;
+            animation: ringCelebrate 1.5s ease-in-out infinite;
+        }
+
+        @keyframes ringCelebrate {
+            50% { transform: translateY(-9px) rotate(7deg) scale(1.05); }
+        }
+
+        .celebration-card p {
+            font-size: 1.12rem;
+            line-height: 1.8;
+            margin-top: 15px;
+        }
+
+        .close-btn {
+            margin-top: 25px;
+            padding: 13px 25px;
+            border: 0;
+            border-radius: 999px;
+            background: #d94b66;
+            color: white;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            section {
+                padding: 65px 0;
+            }
+
+            .hero-card {
+                padding: 45px 22px;
+            }
+
+            .story {
+                grid-template-columns: 1fr;
+            }
+
+            .card,
+            .story-card {
+                padding: 24px;
+            }
+
+            .letter,
+            .proposal-text {
+                font-size: 1.05rem;
+            }
+
+
+            .proposal-buttons {
+                gap: 10px;
+                min-height: 120px;
+            }
+
+            .proposal-btn {
+                padding: 14px 22px;
+                font-size: .98rem;
+            }
+
+            .proposal-hint {
+                font-size: .85rem;
+                padding: 0 12px;
+            }
+
+            .celebration-card {
+                padding: 38px 20px;
+                border-radius: 24px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <main class="page">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-card">
+                <div class="small-heart">❤️</div>
+
+                <h1>To the One I Love ❤️</h1>
+
+                <h2>The girl who became my home. ❤️</h2>
+
+                <p>
+                    This isn't just a website.
+                    It's a small piece of my heart that I wanted to build
+                    especially for you.
+                </p>
+
+                <a href="#story" class="scroll-btn">Our Story ↓</a>
+            </div>
+        </section>
+
+        <!-- OUR STORY -->
+        <section id="story">
+            <h2 class="title">Our Story ❤️</h2>
+
+            <p class="subtitle">
+                I still can't believe that something that started so simply
+                became such an important part of my life.
+            </p>
+
+            <div class="story">
+
+                <div class="story-card">
+                    <div class="icon">💬</div>
+                    <h3>Where It Started</h3>
+                    <p>
+                        We first met on Facebook. At that time, I had no idea
+                        that a simple beginning would eventually become a love
+                        story that means this much to me.
+                    </p>
+                </div>
+
+                <div class="story-card">
+                    <div class="icon">📱</div>
+                    <h3>And Then...</h3>
+                    <p>
+                        Facebook became WhatsApp, WhatsApp became Instagram,
+                        then TikTok, and somehow we ended up talking everywhere
+                        because we simply wanted to stay connected.
+                    </p>
+                </div>
+
+                <div class="story-card">
+                    <div class="icon">📞</div>
+                    <h3>Distance</h3>
+                    <p>
+                        We have spent so much time talking through messages,
+                        audio calls and video calls. Even without being together
+                        physically, you became a huge part of my everyday life.
+                    </p>
+                </div>
+
+                <div class="story-card">
+                    <div class="icon">🤝</div>
+                    <h3>Us</h3>
+                    <p>
+                        We have both made mistakes. We both have flaws.
+                        We have had difficult days, but we kept trying,
+                        forgiving, understanding and fixing things together.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section>
+            <h2 class="title">Years of Us 🫶</h2>
+
+            <p class="subtitle">
+                It hasn't always been perfect. But it has always been real.
+            </p>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>The Beginning</h3>
+                    <p>
+                        Two people met online without knowing where that
+                        conversation would take them.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>Getting Closer</h3>
+                    <p>
+                        We started talking more, sharing our days, our thoughts,
+                        our happiness and even our problems.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>The Ups and Downs</h3>
+                    <p>
+                        We weren't perfect. Sometimes we hurt each other.
+                        Sometimes things became difficult. But we didn't simply
+                        walk away.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>Choosing Each Other</h3>
+                    <p>
+                        We learned that love isn't only about good moments.
+                        It's also about making an effort when things aren't easy.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>And Now...</h3>
+                    <p>
+                        After all this time, we're finally going to meet in
+                        person during Dashain. That thought still feels unreal.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LETTER -->
+        <section>
+            <div class="card">
+                <h2 class="title">Something I Want You To Know</h2>
+
+                <div class="letter">
+                    <p>
+                        Bhawana, I know we both have things we need to improve.
+                        I know we have made mistakes, and I know our relationship
+                        hasn't always been easy.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        But when I look at everything we've been through,
+                        I don't only remember the problems.
+                        I remember how we came back, talked again, understood
+                        each other and tried to make things better.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Maybe sometimes my effort has been bigger.
+                        Maybe sometimes yours has been bigger.
+                        But I have always noticed your effort too, and I am
+                        grateful for it.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I don't want us to pretend that we're perfect.
+                        I want us to <strong>become better together.</strong>
+                        I want us to learn from our mistakes instead of letting
+                        them destroy what we have built.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I love you, Bhawana. Not only for the easy days,
+                        but for everything that makes you <strong>you.</strong>
+                    </p>
+
+                    <div class="signature">
+                        — Yours, always ❤️
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIRST MEETING -->
+        <section class="meeting">
+            <h2 class="title">The Meeting We've Waited For 🥹</h2>
+
+            <div class="card">
+                <div class="meeting-date">Dashain 2026 ❤️</div>
+
+                <p>
+                    For years, we've talked through screens.
+                    We've seen each other through video calls,
+                    heard each other's voices through calls,
+                    and shared countless moments from far away.
+                </p>
+
+                <br>
+
+                <p>
+                    But this time, there won't be a screen between us.
+                    We'll finally stand in front of each other.
+                    And honestly, I can't wait for that moment.
+                </p>
+            </div>
+        </section>
+
+        <!-- FINAL PROPOSAL -->
+        <section class="proposal" id="proposal">
+
+            <div class="ring">💍</div>
+
+            <h2>Bhawana...</h2>
+
+            <p class="proposal-text">
+                We've already shared years of memories.
+                We've laughed, fought, forgiven, grown and stayed.
+                We still have things to learn and things to fix,
+                but I don't want to do that without you.
+            </p>
+
+            <br>
+
+            <p class="proposal-text">
+                I don't promise that every day will be perfect.
+                I promise that when life gets difficult,
+                I'll keep trying, keep communicating and keep choosing us.
+            </p>
+
+            <div class="question">
+                Will You Marry Me? ❤️
+            </div>
+
+            <div class="proposal-buttons">
+                <button class="proposal-btn yes-btn" onclick="celebrate()">
+                    Yes, I Will ❤️
+                </button>
+
+                <button class="proposal-btn no-btn" id="noButton"
+                        onmouseenter="moveButton()"
+                        onclick="tryAgain()">
+                    Not Yet 💔
+                </button>
+            </div>
+
+            <p class="proposal-hint">
+                P.S. The second button might be a little shy. 😌❤️
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Celebration -->
+    <div class="celebration" id="celebration">
+        <div class="celebration-card">
+            <h2>She Said YES! ❤️</h2>
+
+            <div class="celebration-ring">💍🥹❤️</div>
+
+            <p>
+                Bhawana, you have no idea how happy you've made me.
+            </p>
+
+            <p>
+                After all these years, this is only the beginning of
+                our next chapter.
+            </p>
+
+            <p>
+                <strong>I love you. Always. ❤️</strong>
+            </p>
+
+            <button class="close-btn" onclick="closeCelebration()">
+                Back to Our Story
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Current year
+        document.getElementById("year").textContent =
+            "© " + new Date().getFullYear() + " | Bhawana & Me ❤️";
+
+
+        // Floating hearts
+        const heartContainer = document.getElementById("floatingHearts");
+
+        const heartSymbols = [
+            "❤️", "💕", "💗", "💖", "💘", "💞", "💓", "💝"
+        ];
+
+        function createHeart() {
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+            heart.textContent =
+                heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.fontSize = (14 + Math.random() * 22) + "px";
+            heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+            heartContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        setInterval(createHeart, 650);
+
+
+        // Proposal YES
+        function celebrate() {
+            const celebration = document.getElementById("celebration");
+            celebration.classList.add("show");
+
+            // Heart burst
+            for (let i = 0; i < 40; i++) {
+                setTimeout(createHeart, i * 55);
+            }
+
+            // Small vibration on supported phones
+            if (navigator.vibrate) {
+                navigator.vibrate([80, 50, 120]);
+            }
+        }
+
+
+        function closeCelebration() {
+            document.getElementById("celebration").classList.remove("show");
+        }
+
+
+        // Moving "Not Yet" button
+        const noButton = document.getElementById("noButton");
+
+        function moveButton() {
+            if (!noButton) return;
+
+            const padding = 15;
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+
+            const maxX = Math.max(
+                padding,
+                window.innerWidth - buttonWidth - padding
+            );
+
+            const maxY = Math.max(
+                padding,
+                window.innerHeight - buttonHeight - padding
+            );
+
+            const x = padding + Math.random() * (maxX - padding);
+            const y = padding + Math.random() * (maxY - padding);
+
+            noButton.classList.add("moving");
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+
+            const funTexts = [
+                "Nice try! 😏",
+                "Nope! 😄",
+                "Try again! 😜",
+                "Not so fast! 😂",
+                "I'm shy! 🙈",
+                "Catch me! 😝",
+                "Think again! ❤️",
+                "Almost! 😉",
+                "You can't click me! 😂"
+            ];
+
+            noButton.textContent =
+                funTexts[Math.floor(Math.random() * funTexts.length)];
+
+            clearTimeout(window.noButtonReset);
+
+            window.noButtonReset = setTimeout(() => {
+                noButton.classList.remove("moving");
+                noButton.style.left = "";
+                noButton.style.top = "";
+                noButton.textContent = "Not Yet 💔";
+            }, 2200);
+        }
+
+
+        // If she somehow clicks it before it moves
+        function tryAgain() {
+            const messages = [
+                "That's okay... but I'm still hoping for a YES. 🥹❤️",
+                "Take your time, Bhawana. ❤️",
+                "After all these years, you know how serious I am. 💍",
+                "I can wait. I've already waited for our first meeting. 🥹",
+                "No pressure. I just wanted you to know how much I love you. ❤️"
+            ];
+
+            alert(
+                messages[Math.floor(Math.random() * messages.length)]
+            );
+
+            moveButton();
+        }
+
+
+        // Prevent the moving button from becoming awkward after resizing.
+        window.addEventListener("resize", () => {
+            if (noButton && noButton.classList.contains("moving")) {
+                noButton.classList.remove("moving");
+                noButton.style.left = "";
+                noButton.style.top = "";
+                noButton.textContent = "Not Yet 💔";
+            }
+        });
+
+
+        // Escape closes the celebration on desktop/mobile keyboards.
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeCelebration();
+            }
+        });
+    </script>
+
+</body>
+</html>
