@@ -1,8 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>For Bhawana ❤️</title>
 
     <style>
@@ -27,7 +29,10 @@
             overflow-x: hidden;
         }
 
-        /* Floating hearts */
+        /* =========================
+           FLOATING HEARTS
+        ========================== */
+
         .floating-hearts {
             position: fixed;
             inset: 0;
@@ -49,9 +54,11 @@
                 transform: translateY(0) rotate(0deg);
                 opacity: 0;
             }
+
             15% {
                 opacity: .8;
             }
+
             to {
                 transform: translateY(-115vh) rotate(360deg);
                 opacity: 0;
@@ -63,19 +70,27 @@
             z-index: 1;
         }
 
+        /* =========================
+           SECTIONS
+        ========================== */
+
         section {
             width: min(1000px, 92%);
             margin: auto;
             padding: 90px 0;
         }
 
-        /* Hero */
+        /* =========================
+           HERO
+        ========================== */
+
         .hero {
-            min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 25px 0;
         }
 
         .hero-card {
@@ -89,13 +104,27 @@
             animation: appear 1.5s ease;
         }
 
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .small-heart {
             font-size: 45px;
             animation: beat 1.5s infinite;
         }
 
         @keyframes beat {
-            50% { transform: scale(1.18); }
+            50% {
+                transform: scale(1.18);
+            }
         }
 
         .hero h1 {
@@ -129,6 +158,7 @@
             border: 1px solid rgba(255,255,255,.5);
             background: rgba(255,255,255,.12);
             transition: .3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .scroll-btn:hover {
@@ -136,7 +166,10 @@
             background: rgba(255,255,255,.22);
         }
 
-        /* General cards */
+        /* =========================
+           GENERAL
+        ========================== */
+
         .title {
             text-align: center;
             font-size: clamp(2rem, 5vw, 3.3rem);
@@ -162,7 +195,10 @@
             box-shadow: 0 15px 45px rgba(0,0,0,.18);
         }
 
-        /* Story */
+        /* =========================
+           STORY
+        ========================== */
+
         .story {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -198,7 +234,10 @@
             color: #f7e8ea;
         }
 
-        /* Timeline */
+        /* =========================
+           TIMELINE
+        ========================== */
+
         .timeline {
             position: relative;
             max-width: 760px;
@@ -243,7 +282,10 @@
             line-height: 1.8;
         }
 
-        /* Honest message */
+        /* =========================
+           LETTER
+        ========================== */
+
         .letter {
             font-size: 1.15rem;
             line-height: 2;
@@ -261,7 +303,10 @@
             font-style: italic;
         }
 
-        /* Meeting */
+        /* =========================
+           MEETING
+        ========================== */
+
         .meeting {
             text-align: center;
         }
@@ -279,10 +324,14 @@
             color: #f5e4e7;
         }
 
-        /* Proposal */
+        /* =========================
+           PROPOSAL
+        ========================== */
+
         .proposal {
             text-align: center;
             padding-bottom: 120px;
+            overflow: visible;
         }
 
         .ring {
@@ -292,7 +341,9 @@
         }
 
         @keyframes ringFloat {
-            50% { transform: translateY(-10px) rotate(5deg); }
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
         }
 
         .proposal h2 {
@@ -318,19 +369,24 @@
         }
 
         @keyframes pulse {
-            50% { transform: scale(1.04); }
+            50% {
+                transform: scale(1.04);
+            }
         }
 
+        /* =========================
+           PROPOSAL BUTTONS
+        ========================== */
 
-        /* Proposal buttons */
         .proposal-buttons {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 18px;
             margin-top: 32px;
-            min-height: 62px;
+            min-height: 70px;
             position: relative;
+            width: 100%;
         }
 
         .proposal-btn {
@@ -341,9 +397,13 @@
             font-size: 1.05rem;
             font-weight: bold;
             cursor: pointer;
-            transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
+            user-select: none;
         }
 
         .yes-btn {
@@ -369,10 +429,18 @@
             background: rgba(255,255,255,.19);
         }
 
+        /*
+            IMPORTANT:
+            When moving, the button becomes fixed to the screen.
+        */
+
         .no-btn.moving {
             position: fixed;
-            z-index: 20;
-            transition: left .28s ease, top .28s ease, transform .28s ease;
+            z-index: 2000;
+            transition:
+                left .28s ease,
+                top .28s ease,
+                transform .28s ease;
         }
 
         .proposal-hint {
@@ -382,7 +450,10 @@
             opacity: .9;
         }
 
-        /* Celebration */
+        /* =========================
+           CELEBRATION
+        ========================== */
+
         .celebration {
             display: none;
             position: fixed;
@@ -413,8 +484,15 @@
         }
 
         @keyframes celebrationPop {
-            from { opacity: 0; transform: scale(.65) translateY(30px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(.65) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         .celebration-card h2 {
@@ -430,7 +508,9 @@
         }
 
         @keyframes ringCelebrate {
-            50% { transform: translateY(-9px) rotate(7deg) scale(1.05); }
+            50% {
+                transform: translateY(-9px) rotate(7deg) scale(1.05);
+            }
         }
 
         .celebration-card p {
@@ -449,66 +529,298 @@
             font-family: inherit;
             font-weight: bold;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Mobile */
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 25px 15px 40px;
+            color: #eacfd5;
+            font-size: .95rem;
+        }
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
         @media (max-width: 700px) {
+
             section {
-                padding: 65px 0;
+                width: 92%;
+                padding: 55px 0;
+            }
+
+            /* Hero */
+
+            .hero {
+                min-height: 100svh;
+                padding: 18px 0;
             }
 
             .hero-card {
-                padding: 45px 22px;
-            }
-
-            .story {
-                grid-template-columns: 1fr;
-            }
-
-            .card,
-            .story-card {
-                padding: 24px;
-            }
-
-            .letter,
-            .proposal-text {
-                font-size: 1.05rem;
-            }
-
-
-            .proposal-buttons {
-                gap: 10px;
-                min-height: 120px;
-            }
-
-            .proposal-btn {
-                padding: 14px 22px;
-                font-size: .98rem;
-            }
-
-            .proposal-hint {
-                font-size: .85rem;
-                padding: 0 12px;
-            }
-
-            .celebration-card {
                 padding: 38px 20px;
                 border-radius: 24px;
             }
 
+            .small-heart {
+                font-size: 38px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.4rem, 12vw, 4rem);
+                line-height: 1.1;
+                margin: 18px 0 12px;
+            }
+
+            .hero h2 {
+                font-size: 1.15rem;
+                line-height: 1.5;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                line-height: 1.75;
+                margin-top: 20px;
+            }
+
+            .scroll-btn {
+                margin-top: 25px;
+                padding: 12px 22px;
+            }
+
+            /* Titles */
+
+            .title {
+                font-size: clamp(1.8rem, 9vw, 2.7rem);
+                line-height: 1.2;
+            }
+
+            .subtitle {
+                font-size: .98rem;
+                line-height: 1.7;
+                margin-bottom: 30px;
+            }
+
+            /* Cards */
+
+            .card {
+                padding: 22px 18px;
+                border-radius: 20px;
+            }
+
+            /* Story */
+
+            .story {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .story-card {
+                padding: 22px 18px;
+                border-radius: 18px;
+            }
+
+            .story-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .story-card p {
+                font-size: .98rem;
+                line-height: 1.7;
+            }
+
+            /* Timeline */
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item {
+                padding-left: 45px;
+                margin-bottom: 30px;
+            }
+
+            .timeline-dot {
+                left: 4px;
+                width: 23px;
+                height: 23px;
+            }
+
+            .timeline-item h3 {
+                font-size: 1.15rem;
+            }
+
+            .timeline-item p {
+                font-size: .98rem;
+                line-height: 1.7;
+            }
+
+            /* Letter */
+
+            .letter {
+                font-size: 1rem;
+                line-height: 1.85;
+            }
+
+            .signature {
+                font-size: 1.2rem;
+            }
+
+            /* Meeting */
+
+            .meeting-date {
+                font-size: clamp(2rem, 11vw, 3rem);
+                line-height: 1.2;
+            }
+
+            .meeting p {
+                font-size: 1rem;
+                line-height: 1.75;
+            }
+
+            /* Proposal */
+
+            .proposal {
+                padding-top: 45px;
+                padding-bottom: 80px;
+            }
+
+            .ring {
+                font-size: 65px;
+            }
+
+            .proposal h2 {
+                font-size: clamp(2.4rem, 12vw, 3.5rem);
+            }
+
+            .proposal-text {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .question {
+                font-size: clamp(2rem, 10vw, 3rem);
+                line-height: 1.2;
+                margin: 30px 0;
+            }
+
+            /*
+                Buttons are stacked on mobile.
+                This gives enough space for the moving button.
+            */
+
+            .proposal-buttons {
+                flex-direction: column;
+                gap: 14px;
+                min-height: 130px;
+                margin-top: 25px;
+            }
+
+            .proposal-btn {
+                min-width: 180px;
+                padding: 15px 23px;
+                font-size: 1rem;
+            }
+
+            .proposal-hint {
+                font-size: .82rem;
+                line-height: 1.5;
+                padding: 0 15px;
+            }
+
+            /* Celebration */
+
+            .celebration {
+                padding: 12px;
+            }
+
+            .celebration-card {
+                width: 100%;
+                max-height: 88vh;
+                padding: 32px 18px;
+                border-radius: 22px;
+            }
+
+            .celebration-card h2 {
+                font-size: clamp(2rem, 11vw, 3rem);
+                line-height: 1.15;
+            }
+
+            .celebration-card p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .celebration-ring {
+                font-size: 58px;
+            }
+
+            .close-btn {
+                padding: 13px 22px;
+            }
+
+            footer {
+                font-size: .85rem;
+                line-height: 1.6;
+            }
+        }
+
+        /* =================================================
+           VERY SMALL PHONES
+        ================================================= */
+
+        @media (max-width: 380px) {
+
+            section {
+                width: 94%;
+            }
+
+            .hero-card {
+                padding: 32px 16px;
+            }
+
+            .hero h1 {
+                font-size: 2.35rem;
+            }
+
+            .hero h2 {
+                font-size: 1rem;
+            }
+
+            .story-card,
+            .card {
+                padding: 19px 15px;
+            }
+
+            .proposal-btn {
+                min-width: 165px;
+                padding: 14px 20px;
+            }
+
+            .question {
+                font-size: 1.9rem;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- Floating Hearts -->
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <main class="page">
 
-        <!-- HERO -->
+        <!-- ================= HERO ================= -->
+
         <section class="hero">
+
             <div class="hero-card">
+
                 <div class="small-heart">❤️</div>
 
                 <h1>To the One I Love ❤️</h1>
@@ -521,13 +833,22 @@
                     especially for you.
                 </p>
 
-                <a href="#story" class="scroll-btn">Our Story ↓</a>
+                <a href="#story" class="scroll-btn">
+                    Our Story ↓
+                </a>
+
             </div>
+
         </section>
 
-        <!-- OUR STORY -->
+
+        <!-- ================= OUR STORY ================= -->
+
         <section id="story">
-            <h2 class="title">Our Story ❤️</h2>
+
+            <h2 class="title">
+                Our Story ❤️
+            </h2>
 
             <p class="subtitle">
                 I still can't believe that something that started so simply
@@ -537,51 +858,76 @@
             <div class="story">
 
                 <div class="story-card">
+
                     <div class="icon">💬</div>
+
                     <h3>Where It Started</h3>
+
                     <p>
                         We first met on Facebook. At that time, I had no idea
                         that a simple beginning would eventually become a love
                         story that means this much to me.
                     </p>
+
                 </div>
 
+
                 <div class="story-card">
+
                     <div class="icon">📱</div>
+
                     <h3>And Then...</h3>
+
                     <p>
                         Facebook became WhatsApp, WhatsApp became Instagram,
                         then TikTok, and somehow we ended up talking everywhere
                         because we simply wanted to stay connected.
                     </p>
+
                 </div>
 
+
                 <div class="story-card">
+
                     <div class="icon">📞</div>
+
                     <h3>Distance</h3>
+
                     <p>
                         We have spent so much time talking through messages,
                         audio calls and video calls. Even without being together
                         physically, you became a huge part of my everyday life.
                     </p>
+
                 </div>
 
+
                 <div class="story-card">
+
                     <div class="icon">🤝</div>
+
                     <h3>Us</h3>
+
                     <p>
                         We have both made mistakes. We both have flaws.
                         We have had difficult days, but we kept trying,
                         forgiving, understanding and fixing things together.
                     </p>
+
                 </div>
 
             </div>
+
         </section>
 
-        <!-- TIMELINE -->
+
+        <!-- ================= TIMELINE ================= -->
+
         <section>
-            <h2 class="title">Years of Us 🫶</h2>
+
+            <h2 class="title">
+                Years of Us 🫶
+            </h2>
 
             <p class="subtitle">
                 It hasn't always been perfect. But it has always been real.
@@ -590,60 +936,92 @@
             <div class="timeline">
 
                 <div class="timeline-item">
+
                     <div class="timeline-dot"></div>
+
                     <h3>The Beginning</h3>
+
                     <p>
                         Two people met online without knowing where that
                         conversation would take them.
                     </p>
+
                 </div>
 
+
                 <div class="timeline-item">
+
                     <div class="timeline-dot"></div>
+
                     <h3>Getting Closer</h3>
+
                     <p>
                         We started talking more, sharing our days, our thoughts,
                         our happiness and even our problems.
                     </p>
+
                 </div>
 
+
                 <div class="timeline-item">
+
                     <div class="timeline-dot"></div>
+
                     <h3>The Ups and Downs</h3>
+
                     <p>
                         We weren't perfect. Sometimes we hurt each other.
                         Sometimes things became difficult. But we didn't simply
                         walk away.
                     </p>
+
                 </div>
 
+
                 <div class="timeline-item">
+
                     <div class="timeline-dot"></div>
+
                     <h3>Choosing Each Other</h3>
+
                     <p>
                         We learned that love isn't only about good moments.
                         It's also about making an effort when things aren't easy.
                     </p>
+
                 </div>
 
+
                 <div class="timeline-item">
+
                     <div class="timeline-dot"></div>
+
                     <h3>And Now...</h3>
+
                     <p>
                         After all this time, we're finally going to meet in
                         person during Dashain. That thought still feels unreal.
                     </p>
+
                 </div>
 
             </div>
+
         </section>
 
-        <!-- LETTER -->
+
+        <!-- ================= LETTER ================= -->
+
         <section>
+
             <div class="card">
-                <h2 class="title">Something I Want You To Know</h2>
+
+                <h2 class="title">
+                    Something I Want You To Know
+                </h2>
 
                 <div class="letter">
+
                     <p>
                         Bhawana, I know we both have things we need to improve.
                         I know we have made mistakes, and I know our relationship
@@ -687,16 +1065,27 @@
                     <div class="signature">
                         — Yours, always ❤️
                     </div>
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- FIRST MEETING -->
+
+        <!-- ================= MEETING ================= -->
+
         <section class="meeting">
-            <h2 class="title">The Meeting We've Waited For 🥹</h2>
+
+            <h2 class="title">
+                The Meeting We've Waited For 🥹
+            </h2>
 
             <div class="card">
-                <div class="meeting-date">Dashain 2026 ❤️</div>
+
+                <div class="meeting-date">
+                    Dashain 2026 ❤️
+                </div>
 
                 <p>
                     For years, we've talked through screens.
@@ -712,15 +1101,23 @@
                     We'll finally stand in front of each other.
                     And honestly, I can't wait for that moment.
                 </p>
+
             </div>
+
         </section>
 
-        <!-- FINAL PROPOSAL -->
+
+        <!-- ================= FINAL PROPOSAL ================= -->
+
         <section class="proposal" id="proposal">
 
-            <div class="ring">💍</div>
+            <div class="ring">
+                💍
+            </div>
 
-            <h2>Bhawana...</h2>
+            <h2>
+                Bhawana...
+            </h2>
 
             <p class="proposal-text">
                 We've already shared years of memories.
@@ -741,17 +1138,27 @@
                 Will You Marry Me? ❤️
             </div>
 
+
             <div class="proposal-buttons">
-                <button class="proposal-btn yes-btn" onclick="celebrate()">
+
+                <button
+                    class="proposal-btn yes-btn"
+                    onclick="celebrate()">
                     Yes, I Will ❤️
                 </button>
 
-                <button class="proposal-btn no-btn" id="noButton"
-                        onmouseenter="moveButton()"
-                        onclick="tryAgain()">
+
+                <button
+                    class="proposal-btn no-btn"
+                    id="noButton"
+                    onmouseenter="moveButton()"
+                    ontouchstart="handleTouch(event)"
+                    onclick="tryAgain()">
                     Not Yet 💔
                 </button>
+
             </div>
+
 
             <p class="proposal-hint">
                 P.S. The second button might be a little shy. 😌❤️
@@ -759,15 +1166,35 @@
 
         </section>
 
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            Made with love, by the person who chose you. ❤️
+
+            <br>
+
+            <span id="year"></span>
+
+        </footer>
+
     </main>
 
 
-    <!-- Celebration -->
-    <div class="celebration" id="celebration">
-        <div class="celebration-card">
-            <h2>i knew it😝</h2>
+    <!-- ================= CELEBRATION ================= -->
 
-            <div class="celebration-ring">💍🥹❤️</div>
+    <div class="celebration" id="celebration">
+
+        <div class="celebration-card">
+
+            <h2>
+                She Said YES! ❤️
+            </h2>
+
+            <div class="celebration-ring">
+                💍🥹❤️
+            </div>
 
             <p>
                 Bhawana, you have no idea how happy you've made me.
@@ -779,158 +1206,387 @@
             </p>
 
             <p>
-                <strong>I love you. Always. ❤️</strong>
+                <strong>
+                    I love you. Always. ❤️
+                </strong>
             </p>
 
-            <button class="close-btn" onclick="closeCelebration()">
+            <button
+                class="close-btn"
+                onclick="closeCelebration()">
                 Back to Our Story
             </button>
+
         </div>
+
     </div>
 
+
     <script>
-        // Current year
+
+        /* =========================
+           CURRENT YEAR
+        ========================== */
+
         document.getElementById("year").textContent =
             "© " + new Date().getFullYear() + " | Bhawana & Me ❤️";
 
 
-        // Floating hearts
-        const heartContainer = document.getElementById("floatingHearts");
+        /* =========================
+           FLOATING HEARTS
+        ========================== */
+
+        const heartContainer =
+            document.getElementById("floatingHearts");
 
         const heartSymbols = [
-            "❤️", "💕", "💗", "💖", "💘", "💞", "💓", "💝"
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "💘",
+            "💞",
+            "💓",
+            "💝"
         ];
 
+
         function createHeart() {
-            const heart = document.createElement("div");
+
+            const heart =
+                document.createElement("div");
 
             heart.className = "heart";
-            heart.textContent =
-                heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
 
-            heart.style.left = Math.random() * 100 + "%";
-            heart.style.fontSize = (14 + Math.random() * 22) + "px";
-            heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+            heart.textContent =
+                heartSymbols[
+                    Math.floor(
+                        Math.random() *
+                        heartSymbols.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.fontSize =
+                (14 + Math.random() * 22) + "px";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
 
             heartContainer.appendChild(heart);
 
-            setTimeout(() => heart.remove(), 10000);
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
         }
+
 
         setInterval(createHeart, 650);
 
 
-        // Proposal YES
+        /* =========================
+           YES BUTTON
+        ========================== */
+
         function celebrate() {
-            const celebration = document.getElementById("celebration");
+
+            const celebration =
+                document.getElementById("celebration");
+
             celebration.classList.add("show");
 
-            // Heart burst
+
+            /* Heart burst */
+
             for (let i = 0; i < 40; i++) {
-                setTimeout(createHeart, i * 55);
+
+                setTimeout(
+                    createHeart,
+                    i * 55
+                );
+
             }
 
-            // Small vibration on supported phones
+
+            /* Phone vibration */
+
             if (navigator.vibrate) {
-                navigator.vibrate([80, 50, 120]);
+
+                navigator.vibrate([
+                    80,
+                    50,
+                    120
+                ]);
+
             }
+
         }
 
+
+        /* =========================
+           CLOSE CELEBRATION
+        ========================== */
 
         function closeCelebration() {
-            document.getElementById("celebration").classList.remove("show");
+
+            document
+                .getElementById("celebration")
+                .classList
+                .remove("show");
+
         }
 
 
-        // Moving "Not Yet" button
-        const noButton = document.getElementById("noButton");
+        /* =========================
+           MOVING NO BUTTON
+        ========================== */
+
+        const noButton =
+            document.getElementById("noButton");
+
+
+        let touchMoving = false;
+
 
         function moveButton() {
+
             if (!noButton) return;
 
-            const padding = 15;
-            const buttonWidth = noButton.offsetWidth;
-            const buttonHeight = noButton.offsetHeight;
 
-            const maxX = Math.max(
-                padding,
-                window.innerWidth - buttonWidth - padding
-            );
+            const padding = 12;
 
-            const maxY = Math.max(
-                padding,
-                window.innerHeight - buttonHeight - padding
-            );
+            const buttonWidth =
+                noButton.offsetWidth;
 
-            const x = padding + Math.random() * (maxX - padding);
-            const y = padding + Math.random() * (maxY - padding);
+            const buttonHeight =
+                noButton.offsetHeight;
+
+
+            /*
+                Keep the button completely
+                inside the visible screen.
+            */
+
+            const maxX =
+                Math.max(
+                    padding,
+                    window.innerWidth -
+                    buttonWidth -
+                    padding
+                );
+
+
+            const maxY =
+                Math.max(
+                    padding,
+                    window.innerHeight -
+                    buttonHeight -
+                    padding
+                );
+
+
+            const x =
+                padding +
+                Math.random() *
+                Math.max(0, maxX - padding);
+
+
+            const y =
+                padding +
+                Math.random() *
+                Math.max(0, maxY - padding);
+
 
             noButton.classList.add("moving");
-            noButton.style.left = x + "px";
-            noButton.style.top = y + "px";
+
+            noButton.style.left =
+                x + "px";
+
+            noButton.style.top =
+                y + "px";
+
 
             const funTexts = [
+
                 "Nice try! 😏",
+
                 "Nope! 😄",
+
                 "Try again! 😜",
+
                 "Not so fast! 😂",
+
                 "I'm shy! 🙈",
+
                 "Catch me! 😝",
+
                 "Think again! ❤️",
+
                 "Almost! 😉",
+
                 "You can't click me! 😂"
+
             ];
+
 
             noButton.textContent =
-                funTexts[Math.floor(Math.random() * funTexts.length)];
-
-            clearTimeout(window.noButtonReset);
-
-            window.noButtonReset = setTimeout(() => {
-                noButton.classList.remove("moving");
-                noButton.style.left = "";
-                noButton.style.top = "";
-                noButton.textContent = "Not Yet 💔";
-            }, 2200);
-        }
+                funTexts[
+                    Math.floor(
+                        Math.random() *
+                        funTexts.length
+                    )
+                ];
 
 
-        // If she somehow clicks it before it moves
-        function tryAgain() {
-            const messages = [
-                "That's okay... but I'm still hoping for a YES. 🥹❤️",
-                "Take your time, Bhawana. ❤️",
-                "After all these years, you know how serious I am. 💍",
-                "I can wait. I've already waited for our first meeting. 🥹",
-                "No pressure. I just wanted you to know how much I love you. ❤️"
-            ];
-
-            alert(
-                messages[Math.floor(Math.random() * messages.length)]
+            clearTimeout(
+                window.noButtonReset
             );
 
-            moveButton();
+
+            window.noButtonReset =
+                setTimeout(() => {
+
+                    noButton.classList
+                        .remove("moving");
+
+                    noButton.style.left = "";
+
+                    noButton.style.top = "";
+
+                    noButton.textContent =
+                        "Not Yet 💔";
+
+                }, 2200);
+
         }
 
 
-        // Prevent the moving button from becoming awkward after resizing.
-        window.addEventListener("resize", () => {
-            if (noButton && noButton.classList.contains("moving")) {
-                noButton.classList.remove("moving");
-                noButton.style.left = "";
-                noButton.style.top = "";
-                noButton.textContent = "Not Yet 💔";
-            }
-        });
+        /* =========================
+           MOBILE TOUCH
+        ========================== */
+
+        function handleTouch(event) {
+
+            /*
+                Prevent the first touch from
+                immediately clicking the button.
+            */
+
+            event.preventDefault();
+
+            touchMoving = true;
+
+            moveButton();
 
 
-        // Escape closes the celebration on desktop/mobile keyboards.
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeCelebration();
+            /*
+                Allow another touch after
+                the button has moved.
+            */
+
+            setTimeout(() => {
+                touchMoving = false;
+            }, 350);
+
+        }
+
+
+        /* =========================
+           BUTTON CLICK
+        ========================== */
+
+        function tryAgain() {
+
+            /*
+                On mobile, movement already happens
+                on touch, so avoid showing the alert
+                unnecessarily.
+            */
+
+            if (touchMoving) {
+                return;
             }
-        });
+
+
+            const messages = [
+
+                "That's okay... but I'm still hoping for a YES. 🥹❤️",
+
+                "Take your time, Bhawana. ❤️",
+
+                "After all these years, you know how serious I am. 💍",
+
+                "I can wait. I've already waited for our first meeting. 🥹",
+
+                "No pressure. I just wanted you to know how much I love you. ❤️"
+
+            ];
+
+
+            alert(
+                messages[
+                    Math.floor(
+                        Math.random() *
+                        messages.length
+                    )
+                ]
+            );
+
+
+            moveButton();
+
+        }
+
+
+        /* =========================
+           RESIZE
+        ========================== */
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                if (
+                    noButton &&
+                    noButton.classList.contains("moving")
+                ) {
+
+                    noButton.classList.remove("moving");
+
+                    noButton.style.left = "";
+
+                    noButton.style.top = "";
+
+                    noButton.textContent =
+                        "Not Yet 💔";
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           ESCAPE KEY
+        ========================== */
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (event.key === "Escape") {
+
+                    closeCelebration();
+
+                }
+
+            }
+        );
+
     </script>
 
 </body>
 </html>
+```
